@@ -1,0 +1,65 @@
+<script>
+    function getComputerChoice() {
+        let randomNumber = Math.floor(Math.random()*3) + 1;
+        if (randomNumber===1){
+            return "rock"; //ROCK
+        }
+        else if (randomNumber===2){
+            return "paper"; //PAPER
+        }
+        else if (randomNumber===3){
+            return "scissors"; //SCISSORS
+        }
+    }
+    
+    function getPlayerChoice(){
+        return prompt("rock, paper, scissors").toLowerCase()
+    }
+    function playRound (playerSelection, computerSelection) {
+        console.log(playerSelection);
+        console.log(computerSelection);
+        if (playerSelection === computerSelection){
+            return("Draw");
+        }
+        else if(playerSelection==="paper" && computerSelection==="scissors"){
+            return("you lose");
+        }
+        else if(playerSelection==="paper" && computerSelection==="rock"){
+            return("you win");
+        }
+        else if(playerSelection==="rock" && computerSelection==="paper"){
+            return("you lose");
+        }
+        else if(playerSelection==="rock" && computerSelection==="scissors"){
+            return("you win");
+        }
+        else if(playerSelection==="scissors" && computerSelection==="rock"){
+            return("you lose");
+        }
+        else if(playerSelection==="scissors" && computerSelection==="paper"){
+            return("you win");
+        }
+        
+    }
+    function game(){
+        var bestof5 = 0;
+
+        for (let i = 0; i < 5; i++) {
+            let h = playRound(getPlayerChoice(), getComputerChoice());
+            if (h === "Draw"){
+                console.log("Draw");
+            }
+            else if (h ==="you win"){
+                console.log("+1");
+                bestof5++;
+            }
+            else if (h==="you lose"){
+                console.log("ai win");
+            }
+            console.log(bestof5)
+        }
+        
+        bestof5 === 3 ? console.log("HAS GANADO!") : console.log("perdiste!");
+    }
+    game();
+</script>
